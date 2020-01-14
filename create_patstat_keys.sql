@@ -56,13 +56,13 @@ ALTER TABLE tls902_ipc_nace2 ADD PRIMARY KEY (ipc, not_with_ipc, unless_with_ipc
 ALTER TABLE tls904_nuts ADD PRIMARY KEY (nuts);
 
 ----------------defining alternate keys--------------------
-CREATE INDEX ON tls201_appln (appln_auth, appln_nr, appln_kind, receiving_office);
+--CREATE INDEX ON tls201_appln (appln_auth, appln_nr, appln_kind, receiving_office);
 
-CREATE INDEX ON tls206_person (person_name, person_name_orig_lg, person_address, person_ctry_code);
+--CREATE INDEX ON tls206_person (person_name, person_name_orig_lg, person_address, person_ctry_code);
 
-CREATE INDEX ON tls211_pat_publn (publn_auth, publn_nr, publn_kind, publn_date);
+--CREATE INDEX ON tls211_pat_publn (publn_auth, publn_nr, publn_kind, publn_date);
 
-CREATE INDEX ON tls231_inpadoc_legal_event (appln_id, event_seq_nr);
+--CREATE INDEX ON tls231_inpadoc_legal_event (appln_id, event_seq_nr);
 
 --------------------defining foreign keys--------------------
 ALTER TABLE tls202_appln_title ADD FOREIGN KEY (appln_id) REFERENCES tls201_appln(appln_id);
