@@ -1,4 +1,4 @@
-EPO PATSTAT (2019 spring) installation bash scripts for PostgreSQL
+EPO PATSTAT Global - 2019 Autumn Edition installation bash scripts for PostgreSQL
 
 These scripts help to insert data into PATSTAT DB from zip files found in PATSTAT bulk data sets.                
 
