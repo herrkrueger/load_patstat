@@ -119,4 +119,4 @@ ALTER TABLE tls230_appln_techn_field ADD FOREIGN KEY (appln_id) REFERENCES tls20
 
 --ALTER TABLE tls901_techn_field_ipc ADD FOREIGN KEY (techn_field_nr) REFERENCES tls209_appln_ipc(techn_field_nr);
 
---ALTER TABLE tls904_nuts ADD FOREIGN KEY (nuts) REFERENCES tls906_person(nuts); 
+--ALTER TABLE tls904_nuts ADD FOREIGN KEY (nuts) REFERENCES tls206_person(nuts); 
