@@ -8,7 +8,11 @@ The database PATSTAT should be created in PostgreSQL. To create the PATSTAT DB y
 
 postgres=# CREATE USER _your_user_name_ WITH PASSWORD '_your_password_';         
 postgres=# CREATE DATABASE patstat;                                           
-postgres=# GRANT ALL PRIVILEGES ON DATABASE patstat to _your_user_name_;     
+postgres=# GRANT ALL PRIVILEGES ON DATABASE patstat to _your_user_name_;
+
+To avoid retyping your password export your password to PGPASSWORD and then start the script. 
+
+export PGPASSWORD='_your_password_'
 
 This is the simplest type to create a user and a database, please give attention to your system security. 
 
