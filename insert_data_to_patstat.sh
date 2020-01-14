@@ -8,6 +8,10 @@
 # 3- creaing indexes in PATSTAT. This one is taking more time than the
 #    second step.
 
+# config of server adress and servername and databasename for the script
+PG_SRV_NAME="35.205.232.179"
+PG_DB_NAME="patstat"
+
 # control wheather all other files are present
 if [ ! -e ./create_patstat_tables.sql ]; then
     echo "There is no create_patstat_tables.sql file!"
@@ -20,17 +24,13 @@ if [ ! -e ./create_patstat_keys.sql ]; then
 fi
 
 # check if the patstat database is created
-if psql -lqt | cut -d \| -f 1 | grep -qw patstat; then
+if psql -h $PG_SRV_NAME -lqt | cut -d \| -f 1 | grep -qw $PG_DB_NAME; then
     # database exists
     echo "patstat database exists, installation starts"
     
 else
 
-    echo "patstat database doesn't exist."
-    echo "to create the PATSTAT DB you should become a postgres user then in the postgres shell enter the following commands;
-postgres=# CREATE USER your_user_name WITH PASSWORD 'your_password';
-postgres=# CREATE DATABASE patstat;
-postgres=# GRANT ALL PRIVILEGES ON DATABASE patstat to your_user_name;"
+    echo "patstat database doesnt exist."
     exit 0
 fi
 
@@ -48,7 +48,6 @@ fi
 table_list="	
 tls201_appln
 tls202_appln_title
-tls203_appln_abstr
 tls204_appln_prior
 tls205_tech_rel
 tls206_person
@@ -74,10 +73,10 @@ tls803_legal_event_code
 tls901_techn_field_ipc
 tls902_ipc_nace2
 tls904_nuts
-tls906_person"
+"
 
 # creating tables within the PATSTAT database
-psql patstat < ./create_patstat_tables.sql
+psql -h $PG_SRV_NAME -d $PG_DB_NAME < ./create_patstat_tables.sql
 
 read -e -p "Do you want to create keys, indexes just after the data is inserted? y/n " INDEX_Y
 
@@ -102,7 +101,7 @@ do
        # file tlsXXX_partXXX.zip is unziped in a temporary directory
        echo "unziping $file"
        unzip -p "$file" > "$TMP_DIR/"file_to_be_inserted.csv
-       psql -c "\COPY $table_name from '$TMP_DIR/file_to_be_inserted.csv' DELIMITER AS ',' CSV HEADER QUOTE AS '\"' " patstat
+       psql -c "\COPY $table_name from '$TMP_DIR/file_to_be_inserted.csv' DELIMITER AS ',' CSV HEADER QUOTE AS '\"' " -h $PG_SRV_NAME -d $PG_DB_NAME
        echo "INSERTED $file"
        echo " "
    done
@@ -115,11 +114,10 @@ rmdir "$TMP_DIR"
 # index creation, it will take very long hours, don't despair :)
 if [ $INDEX_Y == 'y' ]; then
     echo "creating indexes and keys, it will take very long hours, don't despair :)"
-    psql patstat < ./create_patstat_keys.sql 
-else
+    psql -h $PG_SRV_NAME -d $PG_DB_NAME < ./create_patstat_keys.sql
+ else
     echo "You choose not to create keys, indexes. Please run\n"
-    echo "$ psql patstat < ./create_patstat_keys.sql"
-fi
-
+    echo "$ psql $PG_SRV_NAME < ./create_patstat_keys.sql"
+fi 
 
 echo "The script has finished."
