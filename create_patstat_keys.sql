@@ -1,4 +1,4 @@
--- defining primary keys
+--------------------defining primary keys--------------------
 ALTER TABLE tls201_appln ADD PRIMARY KEY (appln_id);
 
 ALTER TABLE tls202_appln_title ADD PRIMARY KEY (appln_id);
@@ -55,22 +55,16 @@ ALTER TABLE tls902_ipc_nace2 ADD PRIMARY KEY (ipc, not_with_ipc, unless_with_ipc
 
 ALTER TABLE tls904_nuts ADD PRIMARY KEY (nuts);
 
-ALTER TABLE tls906_person ADD PRIMARY KEY (person_id);
-
-------------------------------------------------
--- defining alternate keys
+----------------defining alternate keys--------------------
 CREATE INDEX ON tls201_appln (appln_auth, appln_nr, appln_kind, receiving_office);
 
 CREATE INDEX ON tls206_person (person_name, person_name_orig_lg, person_address, person_ctry_code);
-
-CREATE INDEX ON tls906_person (person_name, person_name_orig_lg, person_address, person_ctry_code);
 
 CREATE INDEX ON tls211_pat_publn (publn_auth, publn_nr, publn_kind, publn_date);
 
 CREATE INDEX ON tls231_inpadoc_legal_event (appln_id, event_seq_nr);
 
-------------------------------------------------
--- defining foreign keys
+--------------------defining foreign keys--------------------
 ALTER TABLE tls202_appln_title ADD FOREIGN KEY (appln_id) REFERENCES tls201_appln(appln_id);
 
 ALTER TABLE tls203_appln_abstr ADD FOREIGN KEY (appln_id) REFERENCES tls201_appln(appln_id);
