@@ -59,10 +59,15 @@ CREATE TABLE tls206_person (
     person_ctry_code varchar(2) DEFAULT '' NOT NULL, 
     doc_std_name_id integer DEFAULT 0 NOT NULL,
     doc_std_name varchar(500) DEFAULT '' NOT NULL,
+    nuts varchar(5) DEFAULT '',
+    nuts_level smallint DEFAULT '9' NOT NULL,
     psn_id integer DEFAULT 0 NOT NULL,
     psn_name varchar(500) DEFAULT '' NOT NULL,
     psn_level smallint DEFAULT 0 NOT NULL,
     psn_sector varchar(50) DEFAULT '' NOT NULL
+    han_id integer DEFAULT 0 NOT NULL,
+    han_name varchar(500) DEFAULT '' NOT NULL,
+    han_harmonized smallint DEFAULT 0 NOT NULL
 );	       
 
 CREATE TABLE tls207_pers_appln (
@@ -306,23 +311,4 @@ CREATE TABLE tls904_nuts (
     nuts varchar(5) DEFAULT ('') NOT NULL,
     nuts_level smallint DEFAULT '0',
     nuts_label varchar(250) DEFAULT ''
-);
-
-CREATE TABLE tls906_person (
-    person_id integer DEFAULT 0 NOT NULL,
-    person_name text DEFAULT '' NOT NULL,
-    person_name_orig_lg varchar(500) DEFAULT '' NOT NULL,
-    person_address text DEFAULT '' NOT NULL,
-    person_ctry_code varchar(2) DEFAULT '' NOT NULL,
-    nuts varchar(5) DEFAULT '',
-    nuts_level smallint DEFAULT '9' NOT NULL,
-    doc_std_name_id integer DEFAULT 0 NOT NULL,
-    doc_std_name varchar(500) DEFAULT '' NOT NULL,
-    psn_id int DEFAULT '0' NOT NULL NOT NULL,
-    psn_name character varying (500) DEFAULT '' NOT NULL,
-    psn_level smallint DEFAULT '0' NOT NULL,
-    psn_sector character varying (50) DEFAULT '' NOT NULL,
-    han_id integer DEFAULT 0 NOT NULL,
-    han_name varchar(500) DEFAULT '' NOT NULL,
-    han_harmonized smallint DEFAULT 0 NOT NULL
 );
