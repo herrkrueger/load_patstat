@@ -1,11 +1,10 @@
 EPO PATSTAT Global - 2019 Autumn Edition installation bash scripts for PostgreSQL
 
-These scripts help to insert data into PATSTAT DB from zip files found in PATSTAT bulk data sets.                
+These scripts help to insert data into PATSTAT DB from zip files found in PATSTAT bulk data sets, which can be found at [PATSTAT Homepage at EPO.org](https://www.epo.org/searching-for-patents/business/patstat.html#tab-1)and [Link to Downloadpage for registered user](https://publication.epo.org/raw-data/product-list).
 
-First, all zip files should be copied into a folder, preferably in an external hard disk or a HD other than the one containing the PATSTAT DB.                         
+First, all zip files should be copied into a folder, preferably in an external hard disk or a HD other than the one containing the PATSTAT DB.
 
 The database PATSTAT should be created in PostgreSQL. To create the PATSTAT DB you should become a postgres user then in the postgres shell enter the following commands;
-
 
         $ postgres=# CREATE USER _your_user_name_ WITH PASSWORD '_your_password_';        
         $ postgres=# CREATE DATABASE patstat;
