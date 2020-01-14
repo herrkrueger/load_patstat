@@ -9,8 +9,8 @@
 #    second step.
 
 # config of server adress and servername and databasename for the script
-PG_SRV_NAME="35.205.232.179"
-PG_DB_NAME="patstat"
+PG_SRV_NAME="_your_server_ip_adress_or_name_"
+PG_DB_NAME="_your_database_name_to_store_patstat_in_"
 
 # control wheather all other files are present
 if [ ! -e ./create_patstat_tables.sql ]; then
