@@ -23,5 +23,8 @@ To create the keys later, check the "create_patstat_keys.sql" and run this comma
 
         $ psql -h _your_pg_serer -d patstat < ./create_patstat_keys.sql
         
+
+
 Tbd: Index creation (gin/gist for fulltext search in title or names)
+
 Tbd: Performance tuning
